@@ -1,0 +1,25 @@
+# ============================================================
+# AI Surveillance & Anomaly Detection System - Dependencies
+# ============================================================
+# Core CV / ML
+ultralytics>=8.0.0          # YOLOv8 detection + built-in ByteTrack
+opencv-python>=4.8.0        # Video I/O and drawing
+numpy>=1.24.0               # Array operations
+torch>=2.0.0                # PyTorch backend for YOLO (CPU works fine)
+torchvision>=0.15.0
+
+# Data handling
+pandas>=2.0.0               # Metrics aggregation
+PyYAML>=6.0                 # Config loading
+
+# Dashboard
+streamlit>=1.28.0           # Web UI
+streamlit-extras>=0.3.0     # Additional Streamlit components
+
+# Visualisation
+matplotlib>=3.7.0           # Summary charts
+Pillow>=9.5.0               # Image utilities
+
+# Utilities
+tqdm>=4.65.0                # Progress bars
+loguru>=0.7.0               # Structured logging

@@ -1,0 +1,90 @@
+# ============================================================
+# AI Surveillance & Anomaly Detection System - Configuration
+# ============================================================
+# All thresholds are adjustable. Tune these to reduce
+# false positives for your specific environment.
+
+detection:
+  # Minimum confidence score for YOLO detections (0.0 - 1.0)
+  confidence_threshold: 0.4
+  # Intersection-over-Union threshold for NMS suppression
+  iou_threshold: 0.5
+  # YOLO model to use (yolov8n = nano/fastest, yolov8s/m/l/x = larger/slower)
+  model_name: "yolov8n.pt"
+  # COCO class IDs to track: 0=person, 24=backpack, 26=handbag, 28=suitcase
+  target_classes: [0, 24, 26, 28]
+
+tracking:
+  # Maximum number of frames to keep a lost track alive
+  max_age: 30
+  # Minimum consecutive detections before confirming a track
+  min_hits: 3
+  # IOU threshold for the tracker's matching step
+  iou_threshold: 0.3
+
+crowd_analysis:
+  # Number of people in frame before a crowd-density alert fires
+  crowd_threshold: 8
+  # How many consecutive frames must exceed threshold before alerting
+  alert_frames: 5
+
+fall_detection:
+  # Bounding box aspect ratio (width/height) above which we suspect a fall
+  aspect_ratio_threshold: 1.2
+  # Number of consecutive frames the person must remain "fallen" to trigger alert
+  consecutive_frames: 8
+  # Vertical drop (in pixels) in one step that counts as a sudden fall indicator
+  sudden_drop_pixels: 40
+
+abandoned_object:
+  # Seconds an object must remain stationary to be flagged as abandoned
+  stationary_seconds: 10
+  # Pixel radius: if no person is within this distance, object is "unattended"
+  proximity_threshold: 120
+  # Minimum frames object must be visible before we start timing it
+  min_visible_frames: 15
+
+suspicious_behaviour:
+  # Seconds a person can remain stationary before being flagged as suspicious
+  inactivity_seconds: 20
+  # Centroid displacement (pixels/frame) below which a person is "stationary"
+  stationary_pixel_threshold: 8
+  # Centroid displacement above which movement is flagged as erratic
+  erratic_movement_threshold: 80
+  # Number of consecutive erratic frames before alerting
+  erratic_frames_required: 5
+
+video:
+  # Target processing FPS (actual FPS depends on hardware)
+  target_fps: 25
+  # Resize input frames for faster processing (set to null to use original size)
+  resize_width: 1280
+  resize_height: 720
+  # Write output video codec (mp4v = MP4, XVID = AVI)
+  output_codec: "mp4v"
+
+display:
+  # Bounding box colours (BGR format for OpenCV)
+  person_color: [0, 255, 0]        # green
+  object_color: [0, 165, 255]      # orange
+  alert_color: [0, 0, 255]         # red
+  text_color: [255, 255, 255]      # white
+  # Overlay panel opacity (0.0 = invisible, 1.0 = opaque)
+  panel_opacity: 0.6
+  # Font scale for on-screen labels
+  font_scale: 0.55
+
+restricted_zones:
+  zones:
+    - name: "Central Test Zone"
+      points:
+        - [450, 150]
+        - [850, 150]
+        - [850, 600]
+        - [450, 600]
+  # Optional list of polygon ROIs. Each entry is a list of [x, y] points.
+  # Leave as an empty list to disable zone-based alerts.
+  # Example:
+  #   - name: "Server Room"
+  #     points: [[100, 150], [400, 150], [400, 450], [100, 450]]
+  

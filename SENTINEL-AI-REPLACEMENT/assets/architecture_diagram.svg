@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif">
+
+<defs>
+  <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L6,3 L0,6 Z" fill="#64748B"/>
+  </marker>
+</defs>
+
+<rect x="0" y="0" width="1000" height="760" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="500.0" y="36" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#0F172A" text-anchor="middle" >AI Surveillance &amp; Anomaly Detection — Pipeline Architecture</text>
+<text x="500.0" y="58" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748B" text-anchor="middle" >YOLOv8 detection &#8594; ByteTrack tracking &#8594; rule-based anomaly modules &#8594; visual output</text>
+<rect x="370.0" y="80" width="260" height="54" rx="8" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2"/>
+<text x="500.0" y="103" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#1E293B" text-anchor="middle" >Video Input</text>
+<text x="500.0" y="121" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#64748B" text-anchor="middle" >video file path  or  webcam index (e.g. 0)</text>
+<line x1="500.0" y1="134" x2="500.0" y2="168" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<rect x="290.0" y="170" width="420" height="76" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+<text x="500.0" y="194" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#1E40AF" text-anchor="middle" >ObjectTracker</text>
+<text x="500.0" y="214" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#3B82F6" text-anchor="middle" >YOLOv8 detection  +  ByteTrack multi-object tracking</text>
+<text x="500.0" y="232" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#64748B" text-anchor="middle" >&#8594; persistent track IDs · bounding boxes · centroid history</text>
+<line x1="500.0" y1="246" x2="500.0" y2="282" stroke="#64748B" stroke-width="2"/>
+<rect x="38.5" y="300" width="215" height="132" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+<text x="50.5" y="324" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#B91C1C" text-anchor="start" >FallDetector</text>
+<text x="50.5" y="346" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Bounding-box aspect ratio</text>
+<text x="50.5" y="363" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Ground-proximity check</text>
+<text x="50.5" y="380" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Sudden vertical drop</text>
+<text x="50.5" y="397" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• N consecutive frames</text>
+<text x="50.5" y="422" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#B91C1C" text-anchor="start" font-style="italic">alert: fall</text>
+<rect x="274.5" y="300" width="215" height="132" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+<text x="286.5" y="324" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#C2410C" text-anchor="start" >AbandonedObjectDetector</text>
+<text x="286.5" y="346" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Stationarity timer</text>
+<text x="286.5" y="363" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Person-proximity check</text>
+<text x="286.5" y="380" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Per-track state machine</text>
+<text x="286.5" y="397" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Reference-centroid drift</text>
+<text x="286.5" y="422" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#C2410C" text-anchor="start" font-style="italic">alert: abandoned_object</text>
+<rect x="510.5" y="300" width="215" height="132" rx="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2"/>
+<text x="522.5" y="324" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#6D28D9" text-anchor="start" >CrowdAnalyser</text>
+<text x="522.5" y="346" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Person count / frame</text>
+<text x="522.5" y="363" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Rolling-average smoothing</text>
+<text x="522.5" y="380" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Consecutive-frame debounce</text>
+<text x="522.5" y="397" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Peak-count tracking</text>
+<text x="522.5" y="422" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#6D28D9" text-anchor="start" font-style="italic">alert: crowd_density</text>
+<rect x="746.5" y="300" width="215" height="132" rx="10" fill="#FDF2F8" stroke="#EC4899" stroke-width="2"/>
+<text x="758.5" y="324" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#BE185D" text-anchor="start" >AnomalyDetector</text>
+<text x="758.5" y="346" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Inactivity timer</text>
+<text x="758.5" y="363" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Erratic-movement window</text>
+<text x="758.5" y="380" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Restricted-zone polygon test</text>
+<text x="758.5" y="397" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="400" fill="#334155" text-anchor="start" >• Ray-casting point-in-poly</text>
+<text x="758.5" y="422" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#BE185D" text-anchor="start" font-style="italic">alerts: inactivity / erratic / zone</text>
+<line x1="500.0" y1="282" x2="146.0" y2="282" stroke="#64748B" stroke-width="2"/>
+<line x1="500.0" y1="282" x2="382.0" y2="282" stroke="#64748B" stroke-width="2"/>
+<line x1="500.0" y1="282" x2="618.0" y2="282" stroke="#64748B" stroke-width="2"/>
+<line x1="500.0" y1="282" x2="854.0" y2="282" stroke="#64748B" stroke-width="2"/>
+<line x1="146.0" y1="282" x2="146.0" y2="300" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="382.0" y1="282" x2="382.0" y2="300" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="618.0" y1="282" x2="618.0" y2="300" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="854.0" y1="282" x2="854.0" y2="300" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="146.0" y1="432" x2="146.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="382.0" y1="432" x2="382.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="618.0" y1="432" x2="618.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="854.0" y1="432" x2="854.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="146.0" y1="450" x2="500.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="382.0" y1="450" x2="500.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="618.0" y1="450" x2="500.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="854.0" y1="450" x2="500.0" y2="450" stroke="#64748B" stroke-width="2"/>
+<line x1="500.0" y1="450" x2="500.0" y2="466" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<rect x="270.0" y="466" width="460" height="64" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+<text x="500.0" y="491" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#047857" text-anchor="middle" >Drawing &amp; Overlay Layer  (utils.py)</text>
+<text x="500.0" y="511" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#64748B" text-anchor="middle" >bounding boxes · motion trails · alert labels · FPS / count HUD panel</text>
+<line x1="500.0" y1="530" x2="500.0" y2="548" stroke="#64748B" stroke-width="2"/>
+<line x1="500.0" y1="548" x2="345.0" y2="548" stroke="#64748B" stroke-width="2"/>
+<line x1="345.0" y1="548" x2="345.0" y2="564" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="500.0" y1="548" x2="655.0" y2="548" stroke="#64748B" stroke-width="2"/>
+<line x1="655.0" y1="548" x2="655.0" y2="564" stroke="#64748B" stroke-width="2" marker-end="url(#arrowhead)"/>
+<rect x="220.0" y="564" width="250" height="64" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+<text x="345.0" y="589" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1E293B" text-anchor="middle" >Annotated Output Video</text>
+<text x="345.0" y="609" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#64748B" text-anchor="middle" >MP4 via main.py --output</text>
+<rect x="530.0" y="564" width="250" height="64" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="2"/>
+<text x="655.0" y="589" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1E293B" text-anchor="middle" >Streamlit Dashboard</text>
+<text x="655.0" y="609" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#64748B" text-anchor="middle" >live preview · metrics · charts (app.py)</text>
+<line x1="40" y1="658" x2="960" y2="658" stroke="#E2E8F0" stroke-width="1"/>
+<text x="40" y="680" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#334155" text-anchor="start" >Bounding-box colour key (utils.py overlay):</text>
+<rect x="40" y="694" width="16" height="16" rx="3" fill="#00C800" stroke="#00C800" stroke-width="0"/>
+<text x="62" y="706" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start" >Person</text>
+<rect x="130.4" y="694" width="16" height="16" rx="3" fill="#FFA500" stroke="#FFA500" stroke-width="0"/>
+<text x="152.4" y="706" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start" >Bag / Backpack / Suitcase</text>
+<rect x="342.4" y="694" width="16" height="16" rx="3" fill="#E60000" stroke="#E60000" stroke-width="0"/>
+<text x="364.4" y="706" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#334155" text-anchor="start" >Active alert (any type)</text>
+<text x="976" y="744" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#94A3B8" text-anchor="end" font-style="italic">Rule-based MVP — see docs/limitations.md</text>
+</svg>
