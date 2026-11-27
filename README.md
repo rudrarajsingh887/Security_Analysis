@@ -1,4 +1,4 @@
-# 🎥 AI Surveillance & Anomaly Detection System
+# 🎥 Sentinel-AI
 
 > **Real-time video analytics pipeline using YOLOv8, ByteTrack, and OpenCV —
 > detecting falls, abandoned objects, crowd density, and suspicious behaviour.**
