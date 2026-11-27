@@ -27,7 +27,7 @@ import yaml
 
 # ── Page config (must be first Streamlit call) ─────────────────────────
 st.set_page_config(
-    page_title="AI Surveillance Dashboard",
+    page_title="SENTINEL AI | Surveillance Dashboard",
     page_icon="🎥",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -108,7 +108,8 @@ def build_config(base: dict) -> dict:
 
 
 # ── Main layout ──────────────────────────────────────────────────────────
-st.title("🎥 AI Surveillance & Anomaly Detection")
+st.title("🎥 SENTINEL AI")
+st.subheader("AI Surveillance & Anomaly Detection")
 st.markdown(
     "Upload a video to detect people, track movement, and flag "
     "potential anomalies such as falls, abandoned objects, and crowd density."
@@ -291,7 +292,7 @@ with tab_about:
     st.subheader("About This Project")
     st.markdown(
         """
-**AI Surveillance & Anomaly Detection System** is an open-source, educational
+**SENTINEL AI — AI Surveillance & Anomaly Detection System** is an open-source, educational
 computer vision pipeline built with YOLOv8, ByteTrack, and OpenCV.
 
 ### What it does
